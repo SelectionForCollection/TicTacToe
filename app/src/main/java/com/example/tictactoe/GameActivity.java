@@ -16,6 +16,8 @@ public class GameActivity extends AppCompatActivity {
     String tic = "Ход делают: крестики";
     String tac = "Ход делают: нолики";
     boolean stepCounter = false;
+    boolean win = false;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class GameActivity extends AppCompatActivity {
                 b00.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b00.setClickable(false);
             stepCounter = !stepCounter;
@@ -56,6 +59,7 @@ public class GameActivity extends AppCompatActivity {
                 b01.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b01.setClickable(false);
             stepCounter = !stepCounter;
@@ -69,6 +73,7 @@ public class GameActivity extends AppCompatActivity {
                 b02.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b02.setClickable(false);
             stepCounter = !stepCounter;
@@ -82,6 +87,7 @@ public class GameActivity extends AppCompatActivity {
                 b10.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b10.setClickable(false);
             stepCounter = !stepCounter;
@@ -95,6 +101,7 @@ public class GameActivity extends AppCompatActivity {
                 b11.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b11.setClickable(false);
             stepCounter = !stepCounter;
@@ -108,6 +115,7 @@ public class GameActivity extends AppCompatActivity {
                 b12.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b12.setClickable(false);
             stepCounter = !stepCounter;
@@ -121,6 +129,7 @@ public class GameActivity extends AppCompatActivity {
                 b20.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b20.setClickable(false);
             stepCounter = !stepCounter;
@@ -134,6 +143,7 @@ public class GameActivity extends AppCompatActivity {
                 b21.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b21.setClickable(false);
             stepCounter = !stepCounter;
@@ -147,6 +157,7 @@ public class GameActivity extends AppCompatActivity {
                 b22.setText("X");
                 step.setText(tac);
             }
+            counter++;
             checkWin();
             b22.setClickable(false);
             stepCounter = !stepCounter;
@@ -167,51 +178,65 @@ public class GameActivity extends AppCompatActivity {
                 || b02.getText().toString().equals("") || b10.getText().toString().equals("") || b20.getText().toString().equals("")
                 || b11.getText().toString().equals("") || b22.getText().toString().equals("") || b12.getText().toString().equals("")
                 || b21.getText().toString().equals(""))) {
-            end();
+            // горизонт
+            if (!(b02.getText().toString().equals("") || b12.getText().toString().equals("") || b22.getText().toString().equals(""))
+                    && b02.getText().toString().equals(b12.getText().toString()) && b12.getText().toString().equals(b22.getText().toString())) {
+                win = true;
+                end();
+            }
+            if (!(b01.getText().toString().equals("") || b11.getText().toString().equals("") || b21.getText().toString().equals(""))
+                    && b01.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b21.getText().toString())) {
+                win = true;
+                end();
+            }
+            if (!(b00.getText().toString().equals("") || b10.getText().toString().equals("") || b20.getText().toString().equals(""))
+                    && b00.getText().toString().equals(b10.getText().toString()) && b10.getText().toString().equals(b20.getText().toString())) {
+                win = true;
+                end();
+            }
+            // вертикаль
+            if (!(b02.getText().toString().equals("") || b01.getText().toString().equals("") || b00.getText().toString().equals(""))
+                    && b02.getText().toString().equals(b01.getText().toString()) && b01.getText().toString().equals(b00.getText().toString())) {
+                win = true;
+                end();
+            }
+            if (!(b12.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
+                    && b12.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b10.getText().toString())) {
+                win = true;
+                end();
+            }
+            if (!(b22.getText().toString().equals("") || b21.getText().toString().equals("") || b20.getText().toString().equals(""))
+                    && b22.getText().toString().equals(b21.getText().toString()) && b21.getText().toString().equals(b20.getText().toString())) {
+                win = true;
+                end();
+            }
+            // диагонали
+            if (!(b02.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
+                    && b02.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b20.getText().toString())) {
+                win = true;
+                end();
+            }
+            if (!(b22.getText().toString().equals("") || b11.getText().toString().equals("") || b00.getText().toString().equals(""))
+                    && b22.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b00.getText().toString())) {
+                win = true;
+                end();
+            }
         }
-        // горизонт
-        if (!(b02.getText().toString().equals("") || b12.getText().toString().equals("") || b22.getText().toString().equals(""))
-                && b02.getText().toString().equals(b12.getText().toString()) && b12.getText().toString().equals(b22.getText().toString())) {
-            end();
-        }
-        if (!(b01.getText().toString().equals("") || b11.getText().toString().equals("") || b21.getText().toString().equals(""))
-                && b01.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b21.getText().toString())) {
-            end();
-        }
-        if (!(b00.getText().toString().equals("") || b10.getText().toString().equals("") || b20.getText().toString().equals(""))
-                && b00.getText().toString().equals(b10.getText().toString()) && b10.getText().toString().equals(b20.getText().toString())) {
-            end();
-        }
-        // вертикаль
-        if (!(b02.getText().toString().equals("") || b01.getText().toString().equals("") || b00.getText().toString().equals(""))
-                && b02.getText().toString().equals(b01.getText().toString()) && b01.getText().toString().equals(b00.getText().toString())) {
-            end();
-        }
-        if (!(b12.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
-                && b12.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b10.getText().toString())) {
-            end();
-        }
-        if (!(b22.getText().toString().equals("") || b21.getText().toString().equals("") || b20.getText().toString().equals(""))
-                && b22.getText().toString().equals(b21.getText().toString()) && b21.getText().toString().equals(b20.getText().toString())) {
-            end();
-        }
-        // диагонали
-        if (!(b02.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
-                && b02.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b20.getText().toString())) {
-            end();
-        }
-        if (!(b22.getText().toString().equals("") || b11.getText().toString().equals("") || b00.getText().toString().equals(""))
-                && b22.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b00.getText().toString())) {
+        if (counter == 9) {
             end();
         }
     }
 
     public void end() {
         String winner = "";
-        if (stepCounter) {
-            winner = tacWin;
+        if (win) {
+            if (stepCounter) {
+                winner = tacWin;
+            } else {
+                winner = ticWin;
+            }
         } else {
-            winner = ticWin;
+            winner = " китайцы!";
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
         builder.setTitle("Игра окончена. Победили " + winner)
