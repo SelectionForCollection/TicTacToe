@@ -174,53 +174,49 @@ public class GameActivity extends AppCompatActivity {
         Button b22 = findViewById(R.id.button_22);
         Button b12 = findViewById(R.id.button_12);
         Button b21 = findViewById(R.id.button_21);
-        if (!(b00.getText().toString().equals("") || b01.getText().toString().equals("") || b01.getText().toString().equals("")
-                || b02.getText().toString().equals("") || b10.getText().toString().equals("") || b20.getText().toString().equals("")
-                || b11.getText().toString().equals("") || b22.getText().toString().equals("") || b12.getText().toString().equals("")
-                || b21.getText().toString().equals(""))) {
-            // горизонт
-            if (!(b02.getText().toString().equals("") || b12.getText().toString().equals("") || b22.getText().toString().equals(""))
-                    && b02.getText().toString().equals(b12.getText().toString()) && b12.getText().toString().equals(b22.getText().toString())) {
-                win = true;
-                end();
-            }
-            if (!(b01.getText().toString().equals("") || b11.getText().toString().equals("") || b21.getText().toString().equals(""))
-                    && b01.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b21.getText().toString())) {
-                win = true;
-                end();
-            }
-            if (!(b00.getText().toString().equals("") || b10.getText().toString().equals("") || b20.getText().toString().equals(""))
-                    && b00.getText().toString().equals(b10.getText().toString()) && b10.getText().toString().equals(b20.getText().toString())) {
-                win = true;
-                end();
-            }
-            // вертикаль
-            if (!(b02.getText().toString().equals("") || b01.getText().toString().equals("") || b00.getText().toString().equals(""))
-                    && b02.getText().toString().equals(b01.getText().toString()) && b01.getText().toString().equals(b00.getText().toString())) {
-                win = true;
-                end();
-            }
-            if (!(b12.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
-                    && b12.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b10.getText().toString())) {
-                win = true;
-                end();
-            }
-            if (!(b22.getText().toString().equals("") || b21.getText().toString().equals("") || b20.getText().toString().equals(""))
-                    && b22.getText().toString().equals(b21.getText().toString()) && b21.getText().toString().equals(b20.getText().toString())) {
-                win = true;
-                end();
-            }
-            // диагонали
-            if (!(b02.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
-                    && b02.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b20.getText().toString())) {
-                win = true;
-                end();
-            }
-            if (!(b22.getText().toString().equals("") || b11.getText().toString().equals("") || b00.getText().toString().equals(""))
-                    && b22.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b00.getText().toString())) {
-                win = true;
-                end();
-            }
+
+        // горизонт
+        if (!(b02.getText().toString().equals("") || b12.getText().toString().equals("") || b22.getText().toString().equals(""))
+                && b02.getText().toString().equals(b12.getText().toString()) && b12.getText().toString().equals(b22.getText().toString())) {
+            win = true;
+            end();
+        }
+        if (!(b01.getText().toString().equals("") || b11.getText().toString().equals("") || b21.getText().toString().equals(""))
+                && b01.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b21.getText().toString())) {
+            win = true;
+            end();
+        }
+        if (!(b00.getText().toString().equals("") || b10.getText().toString().equals("") || b20.getText().toString().equals(""))
+                && b00.getText().toString().equals(b10.getText().toString()) && b10.getText().toString().equals(b20.getText().toString())) {
+            win = true;
+            end();
+        }
+        // вертикаль
+        if (!(b02.getText().toString().equals("") || b01.getText().toString().equals("") || b00.getText().toString().equals(""))
+                && b02.getText().toString().equals(b01.getText().toString()) && b01.getText().toString().equals(b00.getText().toString())) {
+            win = true;
+            end();
+        }
+        if (!(b12.getText().toString().equals("") || b11.getText().toString().equals("") || b10.getText().toString().equals(""))
+                && b12.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b10.getText().toString())) {
+            win = true;
+            end();
+        }
+        if (!(b22.getText().toString().equals("") || b21.getText().toString().equals("") || b20.getText().toString().equals(""))
+                && b22.getText().toString().equals(b21.getText().toString()) && b21.getText().toString().equals(b20.getText().toString())) {
+            win = true;
+            end();
+        }
+        // диагонали
+        if (!(b02.getText().toString().equals("") || b11.getText().toString().equals("") || b20.getText().toString().equals(""))
+                && b02.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b20.getText().toString())) {
+            win = true;
+            end();
+        }
+        if (!(b22.getText().toString().equals("") || b11.getText().toString().equals("") || b00.getText().toString().equals(""))
+                && b22.getText().toString().equals(b11.getText().toString()) && b11.getText().toString().equals(b00.getText().toString())) {
+            win = true;
+            end();
         }
         if (counter == 9) {
             end();
@@ -286,5 +282,7 @@ public class GameActivity extends AppCompatActivity {
         b21.setClickable(true);
 
         stepCounter = false;
+        win = false;
+        counter = 0;
     }
 }
